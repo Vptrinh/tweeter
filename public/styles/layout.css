@@ -17,9 +17,96 @@ html {
 body {
   color: #545149;
   background-color: #f4f1ec;
-  font-size: 24px;
+  font-size: 20px;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+ main {
+   align-self: center;
+   background-color: #f4f1ec;
+   margin-left: 5%;
+   margin-right: 5%;
+ }
+
+ /* Square border going around */
+ article.tweet {
+  margin-top: 30px;
+  border: 3px solid #545149;
+  margin-bottom: 30px;
+ }
+
+ article.tweet:hover {
+  box-shadow: 10px 10px #bcc2da;
+}
+
+ article.tweet header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+ }
+
+ article.tweet header span {
+   display: flex;
+   align-items: center;
+   margin-right: 1em;
+ }
+
+ article.tweet header span img {
+   height: 60px;
+   width: 60px;
+   margin: 1em;
+ }
+
+ article.tweet header span.username {
+   color: #7486c4
+ }
+
+ article.tweet section {
+   margin-left: 10px;
+   margin-right: 10px;
+   border-bottom: 3px solid #545149;
+   padding-bottom: 1em;
+ }
+
+ article.tweet section span {
+   margin: 1em;
+ }
+
+ article.tweet footer {
+   border: none;
+   outline: none;
+   margin: 5px;
+   display: flex;
+   justify-content: space-between;
+ }
+
+ article.tweet footer span.timestamp {
+  font-size: 16px;
+  margin-left: 1em;
+ }
+
+ article.tweet footer span.icons {
+   font-size: 16px;
+   margin-right: 1em;
+ }
+
+ article.tweet footer span.icons{
+   color: #4056A1;
+   margin-left: 5px;
+ }
+
+ .fa-flag:hover{
+  color:orange;
+}
+
+.fa-retweet:hover{
+  color:orange;
+}
+
+.fa-heart:hover{
+  color:orange;
+}

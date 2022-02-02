@@ -1,0 +1,15 @@
+body > header {
+  display: flex;
+  height: 400px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 1.5em;
+  background-color: #ffb259;
+  background-image: url("https://www.transparenttextures.com/patterns/axiom-pattern.png");
+  margin-top: 120px;
+}
+
+header > div {
+  margin-top: 0px;
+}
