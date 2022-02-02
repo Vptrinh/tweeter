@@ -62,7 +62,8 @@ body {
  }
 
  article.tweet header span.username {
-   color: #7486c4
+   color: #7486c4;
+   font-weight: bold;
  }
 
  article.tweet section {
@@ -74,6 +75,7 @@ body {
 
  article.tweet section span {
    margin: 1em;
+   font-weight: bold;
  }
 
  article.tweet footer {
@@ -95,7 +97,7 @@ body {
  }
 
  article.tweet footer span.icons{
-   color: #4056A1;
+   color: #586aa5;
    margin-left: 5px;
  }
 
