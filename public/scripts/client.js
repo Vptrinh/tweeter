@@ -33,7 +33,7 @@ $(document).ready(function(){
   ]
 
   //Creates a new tweet element using data from the object. 
-  
+
   const createTweetElement = function (data) {
     const $tweet = `
     <article class = "tweet">
@@ -73,5 +73,12 @@ $(document).ready(function(){
   // $('#tweets-container').append($tweet);
   // console.log($tweet);
 
+  $("#submit").submit(function(event) {
+    console.log("Form submitted.")
+    event.preventDefault();
+    const param = $(this).serialize();
+    $.post('/tweets', param).then(() => {
+    })
+  });
 });
 
