@@ -4,7 +4,7 @@ Tweeter is a simple, single-page Twitter clone which uses HTML, CSS, JS, jQuery,
 
 ## Final Product
 
-![Screenshot of the App in Desktop View(https://github.com/Vptrinh/tweeter/blob/master/docs/tweeterDesktop.PNG?raw=true)
+![Screenshot of the App in Desktop View](https://github.com/Vptrinh/tweeter/blob/master/docs/tweeterDesktop.PNG?raw=true)
 
 ![Screenshot of the App in Tablet View](https://github.com/Vptrinh/tweeter/blob/master/docs/tweeterTablet.PNG?raw=true)
 
