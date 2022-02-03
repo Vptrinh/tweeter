@@ -43,6 +43,7 @@ $(document).ready(function(){
     }
   }
 
+  //Loads and renders the tweet using the get method.
   const loadTweets = function () {
     $.ajax('/tweets', {method: 'GET'})
     .then(function (tweets) {
@@ -51,12 +52,21 @@ $(document).ready(function(){
     })
   }
 
+//Handles the ajax post request on submit and the form validation.
   $("#submit").submit(function(event) {
     console.log("Form submitted.")
     event.preventDefault();
-    const param = $(this).serialize();
-    $.post('/tweets', param).then(() => {
-    })
+
+    let length = $("form").find("textarea").val().length;
+    if (length > 140) {
+      alert("Characters exceed max amount!")
+    } else if (length <= 0) {
+      alert("Character box cannot be empty.")
+    } else {
+      const param = $(this).serialize();
+      $.post('/tweets', param).then(() => {
+      })
+    }
   });
 
   loadTweets();
