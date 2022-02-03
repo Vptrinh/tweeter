@@ -4,9 +4,9 @@ Tweeter is a simple, single-page Twitter clone which uses HTML, CSS, JS, jQuery,
 
 ## Final Product
 
-!["screenshot description"](#)
+![Screenshot of the App in Desktop View(#)
 
-!["screenshot description"](#)
+![Screenshot of the App in Tablet View](#)
 
 ## Dependencies
 
@@ -18,4 +18,4 @@ Tweeter is a simple, single-page Twitter clone which uses HTML, CSS, JS, jQuery,
 ## Getting Started
 
 - Install all dependencies (using the `npm install` command).
-- Run the development web server using the `node express_server.js` command.
+- Run the development web server using the `npm run local` command.
