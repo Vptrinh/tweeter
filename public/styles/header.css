@@ -1,15 +1,20 @@
-body > header {
+
+main header.profile{
   display: flex;
   height: 400px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   padding-top: 1.5em;
-  background-color: #ffb259;
+  background-color: #8ecae6;
   background-image: url("https://www.transparenttextures.com/patterns/axiom-pattern.png");
   margin-top: 120px;
 }
 
-header > div {
-  margin-top: 0px;
+/* Media Queries to adjust for different screen layouts */
+@media only screen and (min-width: 1024px) {
+  header.profile {
+    width: 33%;
+    margin-top: 200px;
+  }
 }

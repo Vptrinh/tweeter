@@ -20,19 +20,18 @@ $(document).ready(function(){
     const $tweet = `
     <article class = "tweet">
       <header>
-      <span>
-        <img src="${escape(data.user.avatars)}">
-        <span class="name">${escape(data.user.name)}</span>
-      </span>
-      <span class="username">${escape(data.user.handle)}</span>
-    </header>
+        <span>
+          <img src="${escape(data.user.avatars)}">
+          <span class="name">${escape(data.user.name)}</span>
+        </span>
+        <span class="username">${escape(data.user.handle)}</span>
+      </header>
     <section>
       <span class="text"><b>${escape(data.content.text)}</b></span>
     </section>
-    </body>
     <footer>
       <span class="timestamp">${escape(timeago.format(data.created_at))}</span>
-      <span class="icons">
+      <span class="icon">
         <i class="fa-solid fa-flag"></i>
         <i class="fa-solid fa-retweet"></i>
         <i class="fa-solid fa-heart"></i>
