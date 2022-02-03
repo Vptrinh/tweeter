@@ -6,6 +6,13 @@
 
 
 $(document).ready(function(){
+  //To prevent XSS, escape function.
+
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
 
   //Creates a new tweet element using data from the object. 
 
@@ -15,7 +22,7 @@ $(document).ready(function(){
       <header>
       <span>
         <img src="${escape(data.user.avatars)}">
-        <span class="name">${data.user.name}</span>
+        <span class="name">${escape(data.user.name)}</span>
       </span>
       <span class="username">${escape(data.user.handle)}</span>
     </header>
@@ -56,15 +63,22 @@ $(document).ready(function(){
 
 //Handles the ajax post request on submit and the form validation.
   $("#submit").submit(function(event) {
+    
+    let tweetText = $("form").find("textarea").val();
     console.log("Form submitted.")
+
     event.preventDefault();
 
-    let length = $("form").find("textarea").val().length;
-    if (length > 140) {
-      alert("Characters exceed max amount!")
-    } else if (length <= 0) {
-      alert("Character box cannot be empty.")
-    } else {
+    //Shows warning text if any of the form validation fails. Checks to see if the number of characters fall within the required amount.
+    $('.warning').slideDown(400).text('').hide();
+    if (tweetText.length > 140) {
+      return $('.warning').text("Characters exceed max amount!").slideDown();
+    } 
+
+    //Prevents white space from being tweeted.
+    if (tweetText === null || tweetText.trim() === '' || tweetText.length <= 0) {
+      return $('.warning').text("Character box cannot be empty.").slideDown();
+    } 
       $.ajax({
         url: "/tweets",
         data: $(this).serialize(), 
@@ -72,17 +86,9 @@ $(document).ready(function(){
         success: function() {
           $("form").find("textarea").val('');
           loadTweets();
-        }
-      })
-    }
-  });
-
-  const escape = function (str) {
-    let div = document.createElement("div");
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
-  };
-
+      }
+    })
+});
 
   loadTweets();
 });

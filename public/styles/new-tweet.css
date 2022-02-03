@@ -25,3 +25,14 @@ div.buttonContent {
   padding-top: 15px;
   font-family: 'Bungee', cursive;
 }
+
+.warning {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  display: none;
+  color: red;
+  border: 2px solid red;
+  margin-top: 10px;
+}
