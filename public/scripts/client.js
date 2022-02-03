@@ -14,17 +14,17 @@ $(document).ready(function(){
     <article class = "tweet">
       <header>
       <span>
-        <img src="${data.user.avatars}">
+        <img src="${escape(data.user.avatars)}">
         <span class="name">${data.user.name}</span>
       </span>
-      <span class="username">${data.user.handle}</span>
+      <span class="username">${escape(data.user.handle)}</span>
     </header>
     <section>
-      <span class="text"><b>${data.content.text}</b></span>
+      <span class="text"><b>${escape(data.content.text)}</b></span>
     </section>
     </body>
     <footer>
-      <span class="timestamp">${timeago.format(data.created_at)}</span>
+      <span class="timestamp">${escape(timeago.format(data.created_at))}</span>
       <span class="icons">
         <i class="fa-solid fa-flag"></i>
         <i class="fa-solid fa-retweet"></i>
@@ -37,9 +37,11 @@ $(document).ready(function(){
   
   //Creates a new tweet from the data and appends it to the tweets container.
   const renderTweets = function(tweets) {
+    //empty the tweets container each time renderTweets is used.
+    $('#tweets-container').empty();
     for (let tweet of tweets) {
       let $newTweet = createTweetElement(tweet);
-      $('#tweets-container').append($newTweet);
+      $('#tweets-container').prepend($newTweet);
     }
   }
 
@@ -63,11 +65,24 @@ $(document).ready(function(){
     } else if (length <= 0) {
       alert("Character box cannot be empty.")
     } else {
-      const param = $(this).serialize();
-      $.post('/tweets', param).then(() => {
+      $.ajax({
+        url: "/tweets",
+        data: $(this).serialize(), 
+        method: 'post',
+        success: function() {
+          $("form").find("textarea").val('');
+          loadTweets();
+        }
       })
     }
   });
+
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
 
   loadTweets();
 });
