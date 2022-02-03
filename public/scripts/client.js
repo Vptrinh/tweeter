@@ -5,18 +5,18 @@
  */
 
 
-$(document).ready(function(){
+$(document).ready(function() {
   //To prevent XSS, escape function.
 
-  const escape = function (str) {
+  const escape = function(str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
 
-  //Creates a new tweet element using data from the object. 
+  //Creates a new tweet element using data from the object.
 
-  const createTweetElement = function (data) {
+  const createTweetElement = function(data) {
     const $tweet = `
     <article class = "tweet">
       <header>
@@ -38,7 +38,7 @@ $(document).ready(function(){
       </span>
     </footer>
   </article>`;
-  return $tweet;
+    return $tweet;
   };
   
   //Creates a new tweet from the data and appends it to the tweets container.
@@ -49,22 +49,22 @@ $(document).ready(function(){
       let $newTweet = createTweetElement(tweet);
       $('#tweets-container').prepend($newTweet);
     }
-  }
+  };
 
   //Loads and renders the tweet using the get method.
-  const loadTweets = function () {
+  const loadTweets = function() {
     $.ajax('/tweets', {method: 'GET'})
-    .then(function (tweets) {
-      console.log('Success: ', tweets);
-      renderTweets(tweets)
-    })
-  }
+      .then(function(tweets) {
+        console.log('Success: ', tweets);
+        renderTweets(tweets);
+      });
+  };
 
-//Handles the ajax post request on submit and the form validation.
+  //Handles the ajax post request on submit and the form validation.
   $("#submit").submit(function(event) {
     
     let tweetText = $("form").find("textarea").val();
-    console.log("Form submitted.")
+    console.log("Form submitted.");
 
     event.preventDefault();
 
@@ -72,22 +72,22 @@ $(document).ready(function(){
     $('.warning').slideDown(400).text('').hide();
     if (tweetText.length > 140) {
       return $('.warning').text("Characters exceed max amount!").slideDown();
-    } 
+    }
 
     //Prevents white space from being tweeted.
     if (tweetText === null || tweetText.trim() === '' || tweetText.length <= 0) {
       return $('.warning').text("Character box cannot be empty.").slideDown();
-    } 
-      $.ajax({
-        url: "/tweets",
-        data: $(this).serialize(), 
-        method: 'post',
-        success: function() {
-          $("form").find("textarea").val('');
-          loadTweets();
+    }
+    $.ajax({
+      url: "/tweets",
+      data: $(this).serialize(),
+      method: 'post',
+      success: function() {
+        $("form").find("textarea").val('');
+        loadTweets();
       }
-    })
-});
+    });
+  });
 
   loadTweets();
 });
