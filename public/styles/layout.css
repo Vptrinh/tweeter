@@ -33,7 +33,7 @@ body {
    margin-right: 5%;
  }
 
- 
+ /* Media query for the main and the container for desktop mode.*/
 @media only screen and (min-width: 1024px) {
   main {
     flex-direction: row;
