@@ -75,7 +75,7 @@ $(document).ready(function() {
     }
 
     //Prevents white space from being tweeted.
-    if (tweetText === null || tweetText.trim() === '' || tweetText.length <= 0) {
+    if (!tweetText) {
       return $('.warning').text("Character box cannot be empty.").slideDown();
     }
     $.ajax({
@@ -83,8 +83,9 @@ $(document).ready(function() {
       data: $(this).serialize(),
       method: 'post',
       success: function() {
-        $("form").find("textarea").val('');
         loadTweets();
+        $("form").find("textarea").val('');
+        $('.counter').text(140);
       }
     });
   });
